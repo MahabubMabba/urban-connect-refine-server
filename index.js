@@ -11,6 +11,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// MongoDB Connection
 const uri = process.env.DB_USER;
 
 const client = new MongoClient(uri, {
@@ -35,10 +36,12 @@ async function run() {
 
 run();
 
+// Home Route
 app.get("/", (req, res) => {
   res.send("Urban Connect Server is Running!");
 });
 
+// Server
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
